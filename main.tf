@@ -35,10 +35,6 @@ module "vpc_tokyo" {
   region      = var.tokyo_region
   azs         = local.tokyo_azs
   common_tags = local.common_tags
-
-  providers = {
-    aws = aws.tokyo
-  }
 }
 
 module "vpc_taipei" {
@@ -47,10 +43,6 @@ module "vpc_taipei" {
   region      = var.taipei_region
   azs         = local.taipei_azs
   common_tags = local.common_tags
-
-  providers = {
-    aws = aws.taipei
-  }
 }
 
 # Database Modules
@@ -63,10 +55,6 @@ module "database_tokyo" {
   db_password       = var.db_password
   db_instance_class = var.db_instance_class
   common_tags       = local.common_tags
-
-  providers = {
-    aws = aws.tokyo
-  }
 }
 
 module "database_taipei" {
@@ -78,10 +66,6 @@ module "database_taipei" {
   db_password       = var.db_password
   db_instance_class = var.db_instance_class
   common_tags       = local.common_tags
-
-  providers = {
-    aws = aws.taipei
-  }
 }
 
 # Web Modules
@@ -96,10 +80,6 @@ module "web_tokyo" {
   max_size         = var.max_size
   desired_capacity = var.desired_capacity
   common_tags      = local.common_tags
-
-  providers = {
-    aws = aws.tokyo
-  }
 }
 
 module "web_taipei" {
@@ -113,10 +93,6 @@ module "web_taipei" {
   max_size         = var.max_size
   desired_capacity = var.desired_capacity
   common_tags      = local.common_tags
-
-  providers = {
-    aws = aws.taipei
-  }
 }
 
 # Networking Modules (ALB)
@@ -128,10 +104,6 @@ module "networking_tokyo" {
   web_sg_id = module.web_tokyo.web_sg_id
   asg_name  = module.web_tokyo.asg_name
   common_tags = local.common_tags
-
-  providers = {
-    aws = aws.tokyo
-  }
 }
 
 module "networking_taipei" {
@@ -142,10 +114,6 @@ module "networking_taipei" {
   web_sg_id = module.web_taipei.web_sg_id
   asg_name  = module.web_taipei.asg_name
   common_tags = local.common_tags
-
-  providers = {
-    aws = aws.taipei
-  }
 }
 
 # CloudFront Distribution
