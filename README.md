@@ -24,6 +24,7 @@ TF_test/
 ├── outputs.tf              # 輸出定義
 ├── locals.tf               # 本地變數
 ├── terraform.tfvars        # 變數值
+├── observability.tf        # 新增觀測性設置 (CloudWatch/X-Ray/CloudTrail/EventBridge/SNS)
 ├── modules/                # 模塊目錄
 │   ├── vpc/               # VPC 模塊
 │   ├── database/          # 數據庫模塊
