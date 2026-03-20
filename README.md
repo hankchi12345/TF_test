@@ -114,3 +114,36 @@ desired_capacity = 4
 - S3：按存儲和請求計費
 
 使用完畢後記得銷毀資源以避免不必要的費用。
+
+## Observability（觀測性）新增內容
+
+新增文件：`observability.tf`
+
+包含：
+- SNS 告警主題 + Email 訂閱
+- CloudWatch 日誌組：應用、ALB、RDS、VPC Flow Logs、Lambda
+- VPC Flow Logs（東京 & 台北）
+- X-Ray 採樣規則 (default / high-traffic)
+- CloudTrail (多區域、日誌驗證、S3 加密)
+- EventBridge 事件規則：EC2 實例狀態、RDS 事件
+- CloudWatch 儀表板與告警：高CPU、高回應時間、不健康主機、錯誤率
+
+變數變更：
+- `alert_email`
+- `log_retention_days`
+- `enable_vpc_flow_logs`
+- `enable_cloudtrail`
+- `enable_xray`
+- `xray_sampling_rate`
+
+輸出變更：
+- `sns_alerts_topic_arn`
+- `cloudwatch_dashboard_url`
+- `cloudtrail_s3_bucket`
+- `cloudtrail_name`
+- `vpc_flow_logs_log_group_tokyo`
+- `vpc_flow_logs_log_group_taipei`
+- `xray_sampling_rule`
+- `application_log_group`
+- `alb_log_group`
+- `rds_log_group`
