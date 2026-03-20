@@ -76,3 +76,43 @@ variable "desired_capacity" {
   type        = number
   default     = 2
 }
+
+# ============================================================
+# Observability Variables
+# ============================================================
+
+variable "alert_email" {
+  description = "Email address for observability alerts"
+  type        = string
+  default     = "devops@example.com"
+}
+
+variable "log_retention_days" {
+  description = "CloudWatch log retention period in days"
+  type        = number
+  default     = 30
+}
+
+variable "enable_vpc_flow_logs" {
+  description = "Enable VPC Flow Logs"
+  type        = bool
+  default     = true
+}
+
+variable "enable_cloudtrail" {
+  description = "Enable CloudTrail for API auditing"
+  type        = bool
+  default     = true
+}
+
+variable "enable_xray" {
+  description = "Enable AWS X-Ray for distributed tracing"
+  type        = bool
+  default     = true
+}
+
+variable "xray_sampling_rate" {
+  description = "X-Ray sampling rate (0.0 to 1.0)"
+  type        = number
+  default     = 0.1
+}
