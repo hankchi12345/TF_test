@@ -12,10 +12,10 @@ jobs:
     steps:
       #把 TF_test 代碼抓進機器人環境
       - name: "Checkout code"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         #基礎環境Terraform
       - name: "Install terraform"
-        uses: hashicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.5.0
         #基礎環境Terragrunt
