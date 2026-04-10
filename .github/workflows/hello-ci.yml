@@ -1,0 +1,30 @@
+name: "terragrunt CI"
+
+on:
+  push:
+    branches: [ "main" , "dev" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  validate:
+    name: "terragrunt validate"
+    runs-on: ubuntu-latest
+    steps:
+      #把 TF_test 代碼抓進機器人環境
+      - name: "Checkout code"
+        uses: actions/checkout@v3
+        #基礎環境Terraform
+      - name: "Install terraform"
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+        #基礎環境Terragrunt
+      - name: "Install terragrunt"
+        uses: hashicorp/setup-terragrunt@v1.1.0
+        with:
+          terragrunt_version: 0.45.0
+      - name: "Terragrunt validate"
+        run: |
+          # run-all 會遞迴掃描所有資料夾
+          # validate 則會檢查 HCL 語法跟變數有沒有寫錯
+          terragrunt run-all validate --terragrunt-non-interactive
